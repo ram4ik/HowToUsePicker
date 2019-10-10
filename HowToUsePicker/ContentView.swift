@@ -9,8 +9,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var selected = 0
+    
+    let socialMedia = ["Instagram", "Facebook", "Twitter", "Snapchat", "LinkedIn", "YouTube"]
+    
     var body: some View {
-        Text("Hello World")
+        VStack {
+            Picker(selection: $selected, label: Text("My Media")) {
+                ForEach(0 ..< socialMedia.count) { index in
+                    Text(self.socialMedia[index]).tag(index)
+                }
+            }
+        Text("Selected social media: \(socialMedia[selected])")
+        }
     }
 }
 
